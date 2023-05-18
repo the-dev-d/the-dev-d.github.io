@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-background-primary;
+  background-image: url("/texture.png") ;
+  background-blend-mode: overlay;
+}
+
+* {
+    @apply text-slate-200;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-highlight-primary;
+  @apply rounded-s-md;
+  @apply bg-opacity-60;
+  @apply hover:bg-opacity-100;
+
+}
+h3 {
+    @apply text-3xl;
+    @apply font-semibold;
+}
