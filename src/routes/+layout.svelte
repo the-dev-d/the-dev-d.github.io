@@ -4,7 +4,7 @@
     import Nav from '../modules/home/Nav.svelte';
 
     onMount(() => {
-        window.alert("This is a very early deployment at 18/5/2023/. Hence components may look broken in many screens")
+        //window.alert("This is a very early deployment at 18/5/2023/. Hence components may look broken in many screens")
     })
 </script>
 

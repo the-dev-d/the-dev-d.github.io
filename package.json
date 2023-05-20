@@ -27,6 +27,7 @@
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@sveltejs/adapter-cloudflare": "^2.2.4",
     "rollup": "^3.7.5",
     "typed.js": "^2.0.16"
   }

@@ -6,7 +6,6 @@
   import Typed from 'typed.js';
 
   export let data;
-  console.log("processing");
 
   const totalLangShare = data.repoAndLanguages.reduce((acc, val) => {
     for(let key in val){
@@ -35,14 +34,16 @@
             <h4 class="font-semibold text-2xl">Hi, I'm</h4>
             <h1 class="text-5xl font-semibold">Dhaivath Lal</h1>
             <h3 class="text-2xl tracking-widest">I'm a <span id="typed-text" class="font-semibold text-highlight-primary">Developer</span> </h3>
-            <p class="my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione ut maxime eius necessitatibus! Officia obcaecati repellendus velit dolor modi quo quibusdam </p>
+            <p class="my-3">I'm a student and freelance developer with extreme curiosity and
+                enthusiasm for programming. It is my passion, and I never get tired of
+                exploring new methods to achieve the best results </p>
             <span class="w-fit my-6">
-                <Button>Some button</Button>
+                <Button>Know More</Button>
             </span>
             <div class="w-fit flex gap-6 my-3">
-                <Icon fas="fa-brands fa-instagram fa-2x"></Icon>
-                <Icon fas="fa-brands fa-github fa-2x"></Icon>
-                <Icon fas="fa-brands fa-discord fa-2x"></Icon>
+                <a href="https://www.instagram.com/dhaivath_lal/"><Icon fas="fa-brands fa-instagram fa-2x"></Icon></a>
+                <a href="https://github.com/the-dev-d/"><Icon fas="fa-brands fa-github fa-2x"></Icon></a>
+                <a href="https://discordapp.com/users/devD#7236"><Icon fas="fa-brands fa-discord fa-2x"></Icon></a>
             </div>
         </div>
         <div class="w-full">
