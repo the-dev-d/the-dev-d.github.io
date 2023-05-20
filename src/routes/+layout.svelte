@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+    import { onMount } from 'svelte';
     import '../app.css'
     import Nav from '../modules/home/Nav.svelte';
 

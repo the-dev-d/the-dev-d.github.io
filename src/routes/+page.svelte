@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
   import Button from "../modules/home/Button.svelte";
   import Hex from "../modules/home/Hex.svelte";
@@ -6,18 +6,20 @@
   import Typed from 'typed.js';
 
   export let data;
-
-  const totalLangShare = data.repoAndLanguages.reduce((acc, val) => {
+  let totalLangShare:any[] = [];
+  if(data.repoAndLanguages) {
+    totalLangShare = data.repoAndLanguages.reduce((acc, val) => {
     for(let key in val){
         if(key === "CSS") return acc;
         if(acc[key]) acc[key]+=val[key]
         else acc[key] = val[key]
     }
     return acc
-  },{});
-  let total = 0;
-  for( let k in totalLangShare) total+=totalLangShare[k];
-  for( let k in totalLangShare) totalLangShare[k] = Math.round(totalLangShare[k]/total * 100);
+    },{});
+    let total = 0;
+    for( let k in totalLangShare) total+=totalLangShare[k];
+    for( let k in totalLangShare) totalLangShare[k] = Math.round(totalLangShare[k]/total * 100);
+  }
 
   onMount(async () => {
     const typing = new Typed(document.getElementById('typed-text'), {
