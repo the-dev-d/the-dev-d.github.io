@@ -10,7 +10,9 @@ export default {
           text:"#404951"
         },
         highlight: {
-          primary: "#02cb90"
+          primary: "#02cb90",
+          accent: "#12dba0",
+          text: "#abffe3"
         },
         text: {
           primary: "#ffffff"

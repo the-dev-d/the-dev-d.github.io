@@ -2,7 +2,7 @@
 	"name": "the-dev-d.github.io",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -29,6 +29,7 @@
 	"type": "module",
 	"dependencies": {
 		"dotenv": "^16.0.3",
+		"font-logos": "^1.0.0",
 		"typed.js": "^2.0.16"
 	}
 }

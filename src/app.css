@@ -36,3 +36,12 @@ h3 {
     @apply text-3xl;
     @apply font-semibold;
 }
+
+.animation-hidden {
+  transform: translateX(-100%);
+  transition: all 1s ease-in-out;
+}
+
+.animation-sl-show {
+  transform: translateX(0%);
+}

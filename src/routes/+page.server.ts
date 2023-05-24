@@ -1,5 +1,6 @@
 import { GH_AUTH_TOKEN } from '$env/static/private';
 export const prerender = true;
+export const ssr = false;
 export async function load({fetch}) {
     
     let repoAndLanguages;

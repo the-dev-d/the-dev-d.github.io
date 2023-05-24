@@ -8,8 +8,8 @@
     })
 </script>
 
-<main class="snap-y snap-mandatory max-h-screen overflow-y-scroll">
-    <div class="sticky top-0 left-0 py-3">
+<main class="md:snap-y md:snap-mandatory max-h-screen overflow-y-scroll p-3">
+    <div class="snap-start py-3">
         <Nav></Nav>
     </div>
     <slot />
