@@ -51,6 +51,10 @@
   })
   
 </script>
+<svelte:head>
+    <title>DHAIVATH LAL | THE DEV D</title>
+    <meta name="description" content="Personal Portfolio website of Dhaivath Lal">
+</svelte:head>
 <section class="w-full md:h-screen snap-start">
     <div class="container md:my-auto mx-auto flex flex-col-reverse gap-10 md:flex-row p-3 h-full items-center justify-around">
         <div class="w-full grid content-center gap-2  md:h-full">
@@ -104,7 +108,7 @@
 <section class="w-full h-screen snap-start grid md:place-items-center">
     <div class="container mx-auto p-2">
         <h3 class="text-3xl font-semibold text-highlight-primary mb-5">Operating Systems</h3>
-        <p class="mb-6 text-highlight-text">These are the operating systems that I've used as my daily driver over my tech journy.</p>
+        <p class="mb-6 text-highlight-text">These are the operating systems that I've used as my daily driver over my tech journey.</p>
         <div class="cards grid-cols-2 gap-2 gap-x-2 grid md:flex md:justify-between items-end">
             {#each osList as os }
             <a class="w-full hover:scale-90 transition-all" href={os.url}>
