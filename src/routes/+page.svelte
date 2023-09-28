@@ -11,7 +11,7 @@
   if(data.repoAndLanguages) {
     totalLangShare = data.repoAndLanguages.reduce((acc, val) => {
     for(let key in val){
-        if(key === "CSS") return acc;
+        if(key === "CSS" || key==="SCSS") return acc;
         if(acc[key]) acc[key]+=val[key]
         else acc[key] = val[key]
     }
@@ -55,63 +55,63 @@
     <title>DHAIVATH LAL | THE DEV D</title>
     <meta name="description" content="Personal Portfolio website of Dhaivath Lal">
 </svelte:head>
-<section class="w-full md:h-screen snap-start">
-    <div class="container md:my-auto mx-auto flex flex-col-reverse gap-10 md:flex-row p-3 h-full items-center justify-around">
-        <div class="w-full grid content-center gap-2  md:h-full">
-            <h4 class="font-semibold text-2xl">Hi, I'm</h4>
+<section class="w-full p-10 my-44">
+    <div class="container flex flex-col-reverse items-center justify-around h-full gap-10 mx-auto md:my-auto md:flex-row">
+        <div class="grid content-center w-full gap-2 md:h-full">
+            <h4 class="text-2xl font-semibold">Hi, I'm</h4>
             <h1 class="text-5xl font-semibold">Dhaivath Lal</h1>
             <h3 class="text-2xl tracking-widest">I'm a <span id="typed-text" class="font-semibold text-highlight-primary">Developer</span> </h3>
             <p class="my-3">I'm a student and freelance developer with extreme curiosity and
                 enthusiasm for programming. It is my passion, and I never get tired of
                 exploring new methods to achieve the best results </p>
-            <span class="w-fit my-6">
+            <span class="my-6 w-fit">
                 <Button>Know More</Button>
             </span>
-            <div class="w-fit flex gap-6 my-3">
+            <div class="flex gap-6 my-3 w-fit">
                 <a href="https://www.instagram.com/dhaivath_lal/"><Icon fas="fa-brands fa-instagram fa-2x"></Icon></a>
                 <a href="https://github.com/the-dev-d/"><Icon fas="fa-brands fa-github fa-2x"></Icon></a>
                 <a href="https://discordapp.com/users/devD#7236"><Icon fas="fa-brands fa-discord fa-2x"></Icon></a>
             </div>
         </div>
         <div class="w-full">
-            <div class="w-5/6 md:w-2/3 mx-auto md:mx-0 md:ml-auto h-full flex items-center justify-center bg-opacity-70">
+            <div class="flex items-center justify-center w-5/6 h-full mx-auto md:w-2/3 md:mx-0 md:ml-auto bg-opacity-70">
                 <Hex outlined={true} glow={true}>
-                    <img class="w-full object-cover" src="/profile.webp" alt="">
+                    <img class="object-cover w-full" src="/profile.webp" alt="">
                 </Hex>
             </div>
         </div>
     </div>
 </section>
 
-<section class="w-full md:h-screen snap-start grid place-items-center my-10">
-    <div class="container md:h-2/3 mx-auto flex justify-center">
-        <div class="w-full p-2 grid content-between">
-            <h3 class="text-3xl font-semibold text-highlight-primary mb-10">GitHub Projects Report</h3>
+<section class="grid w-full p-10 my-44 ">
+    <div class="container flex justify-center mx-auto md:h-2/3">
+        <div class="grid content-between w-full p-2">
+            <h3 class="mb-10 text-3xl font-semibold text-highlight-primary">GitHub Projects Report</h3>
             <div class="grid gap-12">
                 {#each Object.entries(totalLangShare) as [language, percentage] }
                     <div>
                         <div> 
-                            <span class="font-semibold text-xl">{language}</span>
+                            <span class="text-xl font-semibold">{language}</span>
                             <span class="text-sm">{percentage}%</span>
                         </div>
-                        <div class="w-full rounded-md bg-highlight-primary bg-opacity-50 overflow-hidden">
+                        <div class="w-full overflow-hidden bg-opacity-50 rounded-md bg-highlight-primary">
                             <div style={`width:${percentage}%`} class="p-1 bg-highlight-primary animation-hidden"></div>
                         </div>
                     </div>
             {/each}
             </div>
-            <p class="text-xs opacity-70 my-6">This only shows projects done GitHub. Projects under company repositories other than GitHub is not included</p>
+            <p class="my-6 text-xs opacity-70">This only shows projects done GitHub. Projects under company repositories other than GitHub is not included</p>
         </div>
     </div>
 </section>
 
-<section class="w-full h-screen snap-start grid md:place-items-center">
-    <div class="container mx-auto p-2">
-        <h3 class="text-3xl font-semibold text-highlight-primary mb-5">Operating Systems</h3>
+<section class="grid w-full p-10 my-44">
+    <div class="container p-2 mx-auto">
+        <h3 class="mb-5 text-3xl font-semibold text-highlight-primary">Operating Systems</h3>
         <p class="mb-6 text-highlight-text">These are the operating systems that I've used as my daily driver over my tech journey.</p>
-        <div class="cards grid-cols-2 gap-2 gap-x-2 grid md:flex md:justify-between items-end">
+        <div class="grid items-end grid-cols-2 gap-2 cards gap-x-2 lg:flex lg:justify-between">
             {#each osList as os }
-            <a class="w-full hover:scale-90 transition-all" href={os.url}>
+            <a class="w-full transition-all hover:scale-90" href={os.url}>
                 <Card name={os.name.toUpperCase()} favourite={os.favourite}>
                     <i class={`${os.class} text-6xl text-highlight-accent`}></i>
                 </Card>
