@@ -10,7 +10,7 @@ export async function load({fetch}) {
         });
         
         const data: any[] = await response.json();
-
+        
         const repoMap = data.map(val => ( {name: val.name, langURL: val.languages_url} ))
         const repoLangMapPromise =repoMap.map(repo => fetch(repo.langURL, {headers}))
         const responses = await Promise.all(repoLangMapPromise)
