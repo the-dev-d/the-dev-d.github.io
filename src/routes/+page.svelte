@@ -5,22 +5,22 @@
   import Icon from "../modules/home/Icon.svelte";
   import Typed from 'typed.js';
   import Card from "../modules/home/Card.svelte";
-    import { PUBLIC_API } from "$env/static/public";
+import { PUBLIC_API } from "$env/static/public";
 
   export let data;
   let selectedOS: number|null = null;
 
-  let recommendation = "";
-  let downloadURL = "" ;
+  let response: Promise<{recommendation: string, downloadURL: string}>|null = null;
+
   $: {
-    selectedOS ? loadDescription(selectedOS) : null;
+    if(selectedOS)
+        response = loadDescription(selectedOS);
   }
 
   async function loadDescription(osId: number) {
     const res = await fetch( PUBLIC_API+'/os/'+selectedOS);
-    const data = await res.json();
-    recommendation = data.recommendation;
-    downloadURL = data.downloadURL;
+    const response = await res.json();
+    return response;
   }
   
 
@@ -115,25 +115,29 @@
     <div class="container p-2 mx-auto">
         <h3 class="mb-5 text-3xl font-semibold text-highlight-primary">Operating Systems</h3>
         <p class="mb-6 text-highlight-text">These are the operating systems that I've used as my daily driver over my tech journey.</p>
-        <div class="grid overflow-hidden border-2 rounded-md lg:grid-cols-menu border-opacity-70 border-highlight-primary">
-            <div class="grid gap-2 menu">
+        <div class="grid grid-rows-menu lg:grid-rows-none mt-9 overflow-hidden h-[75vh] lg:h-[65vh] border-2 rounded-md lg:grid-cols-menu border-opacity-70 border-highlight-primary">
+            <div class="grid gap-2 overflow-y-auto grid-cols-fit lg:grid-cols-1 menu">
                 {#each data.menu as item (item.id) }
-                    <button on:click={() => {selectedOS = item.id}} class:bg-highlight-accent={selectedOS === item.id} class="bg-opacity-20" >
-                        <i class={`${item.iconTag ? 'fl-'+item.iconTag : 'fa-brands fa-windows'} text-2xl mr-4 text-highlight-primary`}></i>
-                        {item.name}
+                    <button on:click={() => {selectedOS = item.id}} class:bg-highlight-accent={selectedOS === item.id} class="grid items-center lg:gap-3 lg:flex grid-m-f justify-items-center bg-opacity-20 place-items-center" >
+                        <i class={`${item.iconTag ? 'fl-'+item.iconTag : 'fa-brands fa-windows'} text-2xl text-highlight-primary`}></i>
+                        <span class="hidden lg:block">{item.name}</span>
                     </button>
                 {/each}
             </div>
-            <div class="w-full max-h-[50vh] h-full p-3 lg:p-10 overflow-y-auto leading-8 bg-background-accent content">
-                {#if recommendation === ""}
+            <div class="w-full h-full p-3 overflow-y-auto leading-8 lg:p-10 bg-background-accent content">
+                {#if selectedOS === null}
                     <p class="text-background-text">
                         Click to see my opinion about OS you want to know.
                     </p>
                 {:else}
-                    <p class="mb-10">
-                    {@html recommendation.replaceAll('\n', '<br><br>')}
-                    </p>
-                    <a class="p-3 font-semibold rounded-md bg-highlight-primary" href={downloadURL} >Download</a>
+                    {#await response}
+                        Loading...
+                    {:then {recommendation, downloadURL}} 
+                        <p class="mb-10">
+                            {@html recommendation.replaceAll('\n', '<br><br>')}
+                        </p>
+                        <a class="p-3 font-semibold rounded-md bg-highlight-primary"  target="_blank" href={`https://${downloadURL}`} >Download</a>
+                    {/await}
                {/if}
             </div>
         </div>
@@ -150,9 +154,13 @@
         grid-template-columns: 30% 70%;
         grid-template-areas: "menu" "content";
     }
+    .v-menu {
+        grid-template-rows: min-content 1fr;
+    }
     .menu button {
         text-align: start;
         outline: none;
         padding: 1rem;
     }
+
 </style>
